@@ -1,0 +1,64 @@
+package com.shsxt.newbosses.service;
+
+import java.util.List;
+
+import com.shsxt.newbosses.dao.NoteDao;
+import com.shsxt.newbosses.po.Note;
+import com.shsxt.newbosses.po.NoteType;
+import com.shsxt.newbosses.po.vo.ResultInfo;
+import com.shsxt.newbosses.util.StringUtil;
+
+public class NoteService {
+	private NoteDao noteDao = new NoteDao();
+
+	public List<NoteType> findTypeList() {
+		List<NoteType> list = new TypeService().findTypeList();
+		
+		return list;
+	}
+
+	/**
+	 * 发布或修改云记
+	 *  1、判断参数是否为空
+			为空，code=0....
+		2、调用Dao层的更新方法，添加云记记录，返回受影响的行数
+		3、判断受影响的行数，返回resultInfo对象
+	 * @param typeId
+	 * @param title
+	 * @param content
+	 * @return
+	 */
+	public ResultInfo<Note> addOrUpdate(String typeId, String title, String content) {
+		ResultInfo<Note> resultInfo = new ResultInfo<>();
+		
+		//  1、判断参数是否为空
+		if (StringUtil.isEmpty(typeId)) {
+			resultInfo.setCode(0);
+			resultInfo.setMsg("请选择云记类型！");
+			return resultInfo;
+		}
+		if (StringUtil.isEmpty(title)) {
+			resultInfo.setCode(0);
+			resultInfo.setMsg("云记标题不能为空！");
+			return resultInfo;
+		}
+		if (StringUtil.isEmpty(content)) {
+			resultInfo.setCode(0);
+			resultInfo.setMsg("云记内容不能为空！");
+			return resultInfo;
+		}
+		
+		// 2、调用Dao层的更新方法，添加云记记录，返回受影响的行数
+		int row = noteDao.addOrUpdate(typeId,title,content);
+		
+		// 3、判断受影响的行数，返回resultInfo对象
+		if (row >0) {
+			resultInfo.setCode(1);
+		} else {
+			resultInfo.setCode(0);
+			resultInfo.setMsg("更新失败！");
+		}
+		return resultInfo;
+	}
+
+}

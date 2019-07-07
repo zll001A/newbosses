@@ -1,0 +1,189 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Hello ECharts</title>
+
+<style type="text/css">
+html {
+	background-image: url(statics/images/banner.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+/* nav {background-color: white;} */
+</style>
+
+
+
+<!-- 使用单文件引入的方式使用ECharts.JS -->
+<script src="statics/js/echarts.min.js"></script>
+<script src="statics/js/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	<!-- DOM用来设置展示ECharts图表的区域 -->
+	<div id="myDiv" style="height: 400px;"></div>
+	<script type="text/javascript">
+		function loadData(option) {
+			$.ajax({
+				type : 'post', //传输类型
+				async : false, //同步执行
+				url : 'BarServlet', 
+				data : {
+					
+					
+				},
+				dataType : 'json', //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						//初始化xAxis[0]的data
+						option.xAxis[0].data = [];
+						for (var i = 0; i < result.length; i++) {
+							option.xAxis[0].data.push(result[i].typeName);
+						}
+						//初始化series[0]的data
+						option.series[0].data = [];
+						for (var i = 0; i < result.length; i++) {
+							option.series[0].data.push(result[i].count);
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("加载数据失败");
+				}
+			});//AJAX
+		}//loadData()
+		var myChart = echarts.init(document.getElementById('myDiv'));
+		var option = {
+			itemStyle: {
+		                color: 'yellow',
+		    },
+			tooltip : {
+				show : true
+			},
+			legend : {
+				data : [ '各主题的帖子数' ],
+				textStyle:{
+                    fontSize: 18,//字体大小
+                    color: '#ffffff'//字体颜色
+                }
+
+			},
+			xAxis : [ {
+				type : 'category',
+				axisLabel : {
+					show : true,
+					textStyle : {
+						color : '#ffffff'
+					}
+				}
+			} ],
+			yAxis : [ {
+				type : 'value',
+				axisLabel : {
+					show : true,
+					textStyle : {
+						color : '#ffffff'
+					}
+				}
+			} ],
+			series : [ {
+				name : '各主题的帖子数',
+				type : 'bar'
+			} ]
+		};
+		//加载数据到option
+		loadData(option);
+		//设置option
+		myChart.setOption(option);
+	</script>
+
+
+
+
+<!-- DOM用来设置展示ECharts图表的区域 -->
+	<div id="myDiv1" style="height: 400px;"></div>
+	<script type="text/javascript">
+		function loadData(option) {
+			$.ajax({
+				type : 'post', //传输类型
+				async : false, //同步执行
+				url : 'LocalBarServlet', 
+				data : {
+					
+					
+				},
+				dataType : 'json', //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						//初始化xAxis[0]的data
+						option.xAxis[0].data = [];
+						for (var i = 0; i < result.length; i++) {
+							option.xAxis[0].data.push(result[i].localName);
+						}
+						//初始化series[0]的data
+						option.series[0].data = [];
+						for (var i = 0; i < result.length; i++) {
+							option.series[0].data.push(result[i].count);
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("加载数据失败");
+				}
+			});//AJAX
+		}//loadData()
+		var myChart = echarts.init(document.getElementById('myDiv1'));
+		var option = {
+			itemStyle: {
+		                color: 'red',
+		    },
+			tooltip : {
+				show : true
+			},
+			legend : {
+				data : [ '各地区大学分布' ],
+				textStyle:{
+                    fontSize: 18,//字体大小
+                    color: '#ffffff'//字体颜色
+                }
+
+			},
+			xAxis : [ {
+				type : 'category',
+				axisLabel : {
+					show : true,
+					textStyle : {
+						color : '#ffffff'
+					}
+				}
+			} ],
+			yAxis : [ {
+				type : 'value',
+				axisLabel : {
+					show : true,
+					textStyle : {
+						color : '#ffffff'
+					}
+				}
+			} ],
+			series : [ {
+				name : '各地区大学分布',
+				type : 'bar'
+			} ]
+		};
+		//加载数据到option
+		loadData(option);
+		//设置option
+		myChart.setOption(option);
+	</script>
+
+
+
+</body>
+

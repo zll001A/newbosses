@@ -1,0 +1,292 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+#container {width:500px; height: 200px; }  
+</style>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=您申请的key值"></script> 
+
+
+<title>About</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="statics/about/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="statics/about/css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="statics/about/css/font-awesome.css" rel="stylesheet">  <!-- font-awesome icons --> 
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="js/jquery-2.2.3.min.js"></script>   
+<!-- //js -->
+<!-- web-fonts -->
+<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- //web-fonts --> 
+</head>
+<body>
+
+
+<!-- header -->
+	<div class="header">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header navbar-left wthree">
+					<h1><a href="index.jsp">New Bosses<span>萌新成长之路</span></a></h1>
+				</div>
+				<!-- navigation -->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				
+					
+					<!-- 标题 -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">					
+						<ul class="nav navbar-nav navbar-left cl-effect-14">
+							<li><a href="index.html" class="active">主页</a></li>
+							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学校 <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#华北">华北地区</a></li>
+									<li><a href="#华东">华东地区</a></li>
+									<li><a href="#华中">华中地区</a></li>
+									<li><a href="#华南">华南地区</a></li>
+									<li><a href="#东北">东北地区</a></li>
+									<li><a href="#西南">西南地区</a></li>
+									<li><a href="#西北">西北地区</a></li>
+									<li><a href="#港澳台">港澳台地区</a></li>
+								</ul>
+							</li> 
+							<li><a href="chat/bbs.jsp">论坛</a></li>
+							<li><a href="echart.jsp">数据分析</a></li>
+							<li><a href="about.jsp">关于我们</a></li>	
+							<li><a href="user/selfCenter.jsp">个人中心</a></li>			
+						</ul>		
+						<div class="clearfix"> </div>
+					</div><!-- //navigation -->
+				
+				<div class="clearfix"> </div>
+			</div>	
+		</nav>		
+	</div>	
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- banner -->
+	<div class="banner-1">
+	</div> 
+	<!-- //banner -->
+	<!-- about -->
+	<div class="about">
+		<div class="container">  
+			<div class="w3ls-title">
+				<h3 class="agileits-title">About Us</h3> 
+			</div> 
+			<div class="about-w3ls-row"> 
+				<div class="col-md-5 about-left">
+					<img src="statics/about/images/about.jpg" class="img-responsive" alt=""/>
+				</div>
+				<div class="col-md-7 about-right"> 
+					<div class="about-agile-row">
+						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+							<ul id="myTab" class=" nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">About</a></li>
+							</ul> 
+							<div class="clearfix"> </div>
+							<div id="myTabContent" class="tab-content">
+								<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+									<div class="tabcontent-grids">
+										<p>我们是一群来自上海尚学堂的程序猿，第一次做项目，还请多担待！</p>
+										<p>联系我们请至上海市松江区荣乐东路2369弄45号绿地伯顿大厦2层</p>
+										<div id="container">
+											<script>
+											 var map = new AMap.Map('container', {
+											        zoom:16,//级别
+											        center: [121.246202,31.016408],//中心点坐标
+											        viewMode:'3D'//使用3D视图
+											    });
+											 
+											 var marker = new AMap.Marker({
+											        position:[121.246202,31.016408]//位置
+											    })
+											    map.add(marker);//添加到地图
+											</script>
+										</div> 
+										
+										
+									</div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+					</div>
+				</div> 
+				<div class="clearfix"> </div> 
+			</div>
+		</div>
+	</div>
+	<!-- //about -->
+<!-- work start here -->
+	<div class="work jarallax">
+		<div class="container">
+			<div class="work-agileinfo">
+				<h3>Are You Impressed By Our Work?</h3>
+				<p>Nor again is there anyone who loves or pursues or desires to obtain pain.</p>
+				<div class="w3btns-agile">
+					<a href="contact.html">Get In Touch</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- work end here -->
+
+		<!-- team -->
+	<div class="team agileits-w3layouts" >
+		<div class="container"> 
+		
+			<div class="w3ls-title"> 
+				<h3 class="agileits-title w3title1">Our Team</h3>
+			</div>
+			
+			<div class="team-info wthree" >
+				<div class="col-md-6 team-w3lsgrids" id="div1">
+					<div class="team-left">
+						<img class="img-responsive" src="statics/about/images/1.jpg" alt="">
+					</div>
+					<div class="team-right">
+						<h4>zll</h4>
+						<p>论坛</p>
+						<div class="social-icon">
+							<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> 
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			
+			
+			
+			
+			<div class="team-info wthree">
+				<div class="col-md-6 team-w3lsgrids">
+					<div class="team-left">
+						<img class="img-responsive" src="statics/about/images/13.jpg" alt="">
+					</div>
+					<div class="team-right">
+						<h4>wr</h4>
+						<p>登录注册</p>
+						<div class="social-icon">
+							<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> 
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-6 team-w3lsgrids">
+					<div class="team-left">
+						<img class="img-responsive" src="statics/about/images/2.jpg" alt="">
+					</div>
+					<div class="team-right">
+						<h4>xc </h4>
+						<p>学校模块</p>
+						<div class="social-icon">
+							<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> 
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="team-info team-row2">
+				<div class="col-md-6 team-w3lsgrids">
+					<div class="team-left">
+						<img class="img-responsive" src="statics/about/images/3.jpg" alt="">
+					</div>
+					<div class="team-right">
+						<h4>lxy </h4>
+						<p>个人中心</p>
+						<div class="social-icon">
+							<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> 
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-6 team-w3lsgrids">
+					<div class="team-left">
+						<img class="img-responsive" src="statics/about/images/14.jpg" alt="">
+					</div>
+					<div class="team-right">
+						<h4>fjj</h4>
+						<p>数据分析、关于我们</p>
+						<div class="social-icon">
+							<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> 
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //team -->
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-4 w3layouts_footer_grid"> 
+				<div class="title">
+					<h2>Follow Us</h2> 
+				</div>
+				<div class="social-icon social_agileinfo">
+					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+					<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+					<a href="#" class="social-button skype"><i class="fa fa-skype"></i></a>
+				</div> 
+			</div>
+			<div class="col-md-8 w3layouts_footer_grid">
+				<form action="#" method="post">
+					<input type="email" name="Email" placeholder="Enter Your Email..." required="">
+					<input type="submit" value="Submit"> 
+					<div class="clearfix"> </div>
+				</form>
+				
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	
+	<!-- //footer -->    
+	
+    <script src="statics/js/bootstrap.js"></script>
+</body>
+</html>

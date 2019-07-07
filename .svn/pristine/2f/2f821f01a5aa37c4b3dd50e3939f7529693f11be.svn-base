@@ -1,0 +1,5 @@
+# 键值对的前后最好不要加空格
+jdbcName=com.mysql.jdbc.Driver
+dbUrl=jdbc:mysql://localhost:3306/shangyun?useUnicode=true&characterEncoding=UTF-8
+dbName=root
+dbPwd=root

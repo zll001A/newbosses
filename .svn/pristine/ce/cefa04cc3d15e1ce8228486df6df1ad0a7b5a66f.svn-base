@@ -1,0 +1,52 @@
+package com.shsxt.newbosses.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.shsxt.newbosses.po.vo.ChatList;
+
+public class ChatDao {
+
+	BaseDao baseDao = new BaseDao();
+	
+	/**
+	 * 获得出现一次的信息给前台页面填充
+	 * @param local
+	 * @param sch
+	 * @return
+	 */
+	public ChatList findByLocalAndSch(String local, String sch) {
+		//定义sql语句
+		String sql = "select localName from new_local where schLocal = ?";
+		// 定义参数集合
+		List<Object> params = new ArrayList<Object>();
+		params.add(local);
+		String localName = (String) baseDao.findSingleValue(sql, params);
+		ChatList chatList = new ChatList();
+		chatList.setLocalName(localName);
+		return chatList;
+	}
+
+	/**
+	 * 获得内容列表
+	 * @param local
+	 * @param sch
+	 * @return
+	 */
+	public List<ChatList> findList(String local, String sch) {
+		//定义sql语句
+		String sql = "select title,pubTime,typeName,schName,content from (select title,content,typeName,userId,pubTime from new_note n,new_type t where t.typeId=n.typeId) m left outer join"
+		+"(select uName,schName,schLocal,u.userId from new_user u,new_school s where u.schId = s.schId) u "
+		+"on m.userId = u.userId  where schlocal = 0 or schlocal = ?";
+		//定义参数集合
+		List<Object> params = new ArrayList<Object>();
+		params.add(local);
+		@SuppressWarnings("unchecked")
+		List<ChatList> list = baseDao.queryRows(sql, params, ChatList.class);
+		return list;
+	}
+
+	
+	
+
+}

@@ -1,0 +1,39 @@
+package com.shsxt.newbosses.util;
+
+import java.security.MessageDigest;
+
+import org.apache.tomcat.util.codec.binary.Base64;
+
+/**
+ * 字符串加密
+ * @author Lisa Li
+ *
+ */
+public class MD5Util {
+
+	/**
+	 * 加密密码
+	 * @param str
+	 * @return
+	 */
+	public static String encode(String str) {
+		String value = "";
+		
+		try {
+			// 得到md5算法的应用程序
+			MessageDigest messageDigest = MessageDigest.getInstance("md5");
+			// md5加密
+			byte[] bytes = messageDigest.digest(str.getBytes());
+			// 通过base64编码，将byte数组转换为字符串
+			value = Base64.encodeBase64String(bytes);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(encode(encode("123456")));  //DIjVZpTC+zvMQW4SLBBy6w==
+		System.out.println(encode("123456"));          //4QrcOUm6Wau+VuBX8g+IPg==
+	}
+}

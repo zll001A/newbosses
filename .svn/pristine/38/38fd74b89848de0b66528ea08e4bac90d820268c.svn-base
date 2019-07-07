@@ -1,0 +1,41 @@
+package com.shsxt.newbosses.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.shsxt.newbosses.po.New_Type;
+import com.shsxt.newbosses.po.NoteType;
+
+public class TypeDao {
+	
+	private BaseDao baseDao = new BaseDao();
+
+	@SuppressWarnings("unchecked")
+	public List<New_Type> findTypeList() {
+		// 定义sql语句
+		String sql = "select typeId,typeName from new_type";
+		// 设置参数集合
+		List<Object> params = new ArrayList<Object>();
+		// 调用BaseDao层的查询方法，返回集合
+		List<New_Type> list = baseDao.queryRows(sql, params, NoteType.class);
+		return list;
+	}
+
+	/**
+	 * 通过用户ID查询类型列表 有schId限定条件
+	 * @param schId
+	 * @return
+	 */
+	public List<New_Type> findTypeList(String schId) {
+		// 定义sql语句
+		String sql = "select typeId,typeName from new_type where schId = ?";
+		// 设置参数集合
+		List<Object> params = new ArrayList<Object>();
+		params.add(schId);
+		// 调用BaseDao层的查询方法，返回集合
+		@SuppressWarnings("unchecked")
+		List<New_Type> list = baseDao.queryRows(sql, params, NoteType.class);
+		return list;
+	}
+
+}

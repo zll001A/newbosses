@@ -1,0 +1,43 @@
+package com.shsxt.newbosses.service;
+
+import com.shsxt.newbosses.dao.ChatDao;
+import com.shsxt.newbosses.po.vo.ChatList;
+import com.shsxt.newbosses.po.vo.ResultInfo;
+import com.shsxt.newbosses.util.StringUtil;
+
+/**
+ * 执行chat
+ */
+
+public class ChatService {
+	
+	private ChatDao chatDao = new ChatDao();
+	
+	/**
+	 * 找到页面显示的全部信息
+	 * @param local
+	 * @param sch
+	 * @return
+	 */
+	public ResultInfo<ChatList> findList(String local, String sch) {
+		ResultInfo<ChatList> resultInfo = new ResultInfo<>();
+		// 判断非空，地区为空不可能
+		if (StringUtil.isEmpty(local)) {
+			// 如果为空，code=0，msg=XX，返回resultInfo
+			resultInfo.setCode(0);
+			resultInfo.setMsg("系统异常，请重试~");
+			return resultInfo;
+		}
+		// 2、第一次调用Dao层，返回对象 含有String类型   地区
+		ChatList chatlist = chatDao.findByLocalAndSch(local,sch);
+		if(chatlist.equals(null)){
+			resultInfo.setCode(0);
+			resultInfo.setMsg("系统异常，请重试~");
+			
+		}else{
+			resultInfo.setResult(chatlist);
+		}
+		return resultInfo;
+	}
+
+}

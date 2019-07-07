@@ -1,0 +1,5 @@
+package com.shsxt.newbosses.dao;
+
+public class NoteDao {
+	private BaseDao baseDao = new BaseDao();
+}

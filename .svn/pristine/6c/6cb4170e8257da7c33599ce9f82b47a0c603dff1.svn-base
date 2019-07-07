@@ -1,0 +1,302 @@
+// ========================= 删除类型========================
+/**
+ * 删除用户
+ * @param typeId
+ */
+function deleteType(typeId) {
+	// 询问用户是否确认删除
+	swal({ 
+		  title: "你确定要删除这条记录吗？", 
+		  text: "", 
+		  type: "warning",
+		  showCancelButton: true, 
+		  confirmButtonColor: "orange",
+		  confirmButtonText: "确定",
+		  cancelButtonText: "取消"
+		}).then(function(){
+			// 发送ajax请求
+			$.ajax({
+				type:"post",
+				url:"typeServlet",
+				data:{
+					actionName:"delete",
+					typeId:typeId
+				},
+				success:function(data) {
+					// 1=成功，0=失败
+					if (data.code == 1) {
+						// 提示成功
+						swal (data.msg, "","success");
+						// 移除指定的tr记录
+						deleteDom(typeId);
+					} else {
+						// 提示失败
+						swal (data.msg, "","error");
+					}
+				}
+			});
+	    });
+}
+
+
+
+/**
+  移除tr对象
+  	删除时需要判断记录数
+  		如果有多条记录数，则直接移除当前tr
+  		如果只有一条数据，则需要移除整个table，并设置h2提示信息
+  
+  	1、给每个tr元素绑定id属性值（在forEach循环时，设置id）
+  	2、给table表格设置id属性值，并得到table对象
+  	3、获取table对象的子元素tbody对象，再得到tbody的子元素tr
+  	4、得到tr的数量 （如果数量等于2，表头+数据，说明只有一条数据；否则就有多条数据）
+  	5、判断tr的数量是否是2 （表头+数据）
+  		如果只有一条数据，则需要移除整个table，并设置h2提示信息
+  		如果有多条记录数，则直接移除当前tr
+  		
+   移除左侧云记类别分组的li对象
+   	 1、给li元素绑定id属性值
+   	 2、通过id选择器得到li对象，并移除
+ * @param typeId
+ */
+function deleteDom(typeId) {
+	// 得到table对象
+	var table = $("#myTable");
+	// 获取table对象的子元素tbody对象，再得到tbody的子元素tr
+	var trs = table.children().children();
+	// 得到tr的数量 （如果数量等于2，表头+数据，说明只有一条数据；否则就有多条数据）
+	var len = trs.length;
+	// 判断tr的数量是否是2 （表头+数据）
+	if (len == 2) {
+		// 先通过table对象得到父元素div
+		var div = table.parent();
+		// 移除表格对象
+		table.remove();
+		// 给div对象中追加h2提示信息
+		div.append("<h2>暂未查询到类型记录！</h2>");
+	} else {
+		// 如果有多条记录数，则直接移除当前tr
+		$("#tr_"+typeId).remove();
+	}
+	
+	//  移除左侧云记类别分组的li对象
+	$("#li_"+typeId).remove();
+}
+
+// 类型名的默认值
+var typeNameOld = "";
+
+//========================= 修改类型========================
+/**
+ * 打开模态框
+ */
+function openDialog(typeId) {
+	
+	// 给隐藏域和文本框赋值
+	$("#typeId").val(typeId);
+	
+	// 得到点击的修改按钮的tr对象
+	var tr = $("#tr_" + typeId);
+	// 得到tr 的第二个子元素的值
+	var tname = tr.children().eq(1).text();
+	$("#typename").val(tname);
+	
+	typeNameOld = tname;
+	
+	// 设置模态框的标题
+	$("#myModalLabel").html("修改类型");
+	
+	// 手动打开模态框
+	$("#myModal").modal("show");
+}
+
+/**
+ * 保存按钮的点击事件
+ */
+$("#btn_submit").click(function(){
+	// 得到类型名称的值
+	var typeName = $("#typename").val();
+	// 非空判断
+	if (isEmpty(typeName)) {
+		$("#msg").html("类型名称不能为空！");
+		return;
+	}
+	
+	var typeId = $("#typeId").val();
+	
+	// 如果不为空，则发送ajax请求
+	$.ajax({
+		type:"post",
+		url:"typeServlet",
+		data:{
+			actionName:"addOrUpdate",
+			typeName:typeName,
+			typeId:typeId
+		},
+		success:function(data) {
+			// 判断是否更新成功
+			if (data.code == 1) { // 成功
+				// 手动关闭模态框
+				$("#myModal").modal("hide");
+				// 提示成功
+				swal(data.msg,"","success");
+				
+				// 判断是添加操作还是修改操作（通过判断typeId是否为空）
+				if (isEmpty(typeId)) {
+					
+					// 添加行为的DOM操作
+					addDom(data.result);
+					
+				} else{
+					
+					// 修改行为的DOM操作
+					updateDom(typeId,typeName);
+				}
+				
+			} else {
+				// 提示用户失败
+				swal(data.msg,"","error");
+			}
+		}
+	});
+	
+});
+
+
+/**
+ * 修改行为的DOM操作
+ * 	1、修改当前tr对象类型名称
+ * 	2、修改左侧类型分组对应的值
+ * @param typeId
+ * @param typeName
+ */
+function updateDom(typeId,typeName) {
+	// 1、修改当前tr对象类型名称
+	// 得到当前的tr对象
+	var tr = $("#tr_"+typeId);
+	// 得到当前tr的所有子元素td
+	var tds = tr.children();
+	// 得到第二个子元素td
+	var td = tds.eq(1);
+	// 修改单元格的值
+	td.text(typeName);
+	
+	// 2、修改左侧类型分组对应的值
+	// 给左侧类型分组名称加上span标签，并设置id属性值
+	// 修改指定span的值
+	$("#span_"+typeId).text(typeName);
+}
+
+
+//========================= 添加类型========================
+/**
+ * 添加按钮绑定事件
+ */
+$("#addBtn").click(function(){
+	
+	// 清空隐藏域和文本框的值
+	$("#typeId").val("");
+	$("#typename").val("");
+	
+	// 设置模态框的标题
+	$("#myModalLabel").html("添加类型");
+	
+	// 手动打开模态框
+	$("#myModal").modal("show");
+});
+
+/**
+ * 添加类型的DOM操作
+ * 	1、添加tr
+ * 		如果存在数据，则可以直接append到table对象中
+ * 		如果没有数据，则需要创建table，在将table追加进去
+ * 	2、添加左侧类型分组的li
+ * 
+ * @param type
+ */
+function addDom (type) {
+	// 1、添加tr
+	// 得到类型ID和名称
+	var typeId = type.typeId;
+	var typeName = type.typeName;
+	
+	// 创建tr对象
+	var tr = '<tr id="tr_'+typeId+'"> <td>'+typeId+'</td><td>'+typeName+'</td>' +
+			'<td><button class="btn btn-primary" type="button" onclick="openDialog('+typeId+')">修改</button>&nbsp;' +
+					'<button class="btn btn-danger del" type="button" onclick="deleteType('+typeId+')">删除</button></td></tr>';
+	
+	// 得到table对象
+	var table = $("#myTable");
+	
+	// 判断table是否存在
+	if (table.length == 1) { // 存在表格，可以直接appendtr
+		// 向table中的tbody中追加tr对象
+		table.children().append(tr);
+	} else {
+		
+		// 创建table对象
+		var myTable = '<table class="table table-hover table-striped" id="myTable"><tbody>'+
+						'<tr> <th>编号</th> <th>类型</th> <th>操作</th> </tr>' + tr + '</tbody></table>';
+		
+		// 得到父元素div
+		var div = $("#myDiv");
+		div.html(myTable);
+	}
+	
+	
+	// 2、添加左侧类型分组的li 
+	// li的父元素ul需要绑定id属性值
+	var li = '<li id="li_'+typeId+'"><a href=""><span id="span_'+typeId+'">'+typeName+'</span><span class="badge">0</span></a></li>';
+	// 将里追加到ul中
+	$("#typeUl").prepend(li);
+}
+
+
+// =====================验证类型名唯一性===================
+/**
+ * 类型名文本失焦聚焦事件
+ */
+$("#typename").blur(function(){
+	// 得到类型名称的值
+	var typeName = $("#typename").val();
+	// 非空判断
+	if (isEmpty(typeName)) {
+		$("#msg").html("类型名称不能为空！");
+		// 禁用按钮
+		$("#btn_submit").prop("disabled",true);
+		return;
+	}
+	
+	// 判断文本框中的值是否做了修改
+	if (typeName == typeNameOld) {
+		return;
+	}
+	
+	// 发送ajax请求后台，判断类型名是否可用
+	var params = {
+			actionName:"checkTypeName",
+			typeName:typeName,
+			typeId:$("#typeId").val() // 修改操作验证类型名时需要的参数
+	};
+	$.get("typeServlet",params,function(data){
+		console.log(data);
+		if (data.code != 1) { // 失败
+			$("#msg").html(data.msg);
+			// 禁用按钮
+			$("#btn_submit").prop("disabled",true);
+		}
+	});
+	
+}).focus(function(){
+	$("#msg").html("");
+	// 按钮可用
+	$("#btn_submit").prop("disabled",false);
+});
+
+
+
+	
+
+
+
+

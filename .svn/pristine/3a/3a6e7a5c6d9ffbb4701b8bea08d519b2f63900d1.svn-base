@@ -1,0 +1,30 @@
+package com.shsxt.newbosses.util;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSON;
+
+
+public class JsonUtil {
+
+	/**
+	 * 将java对象转换成json字符串，响应给ajax的回调函数
+	 * @param response
+	 * @param object
+	 */
+	public static void toJson(HttpServletResponse response, Object object) {
+		try {
+			// 设置响应类型及编码
+			response.setContentType("application/json;charset=UTF-8");
+			// 将java对象转换成josn字符串
+			String json = JSON.toJSONString(object);
+			// 响应对象
+			response.getWriter().write(json);
+			response.getWriter().close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,308 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>论坛</title>
+	<!-- Meta Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	
+	
+	<!-- //Meta Tags -->
+	<!-- Style-sheets -->
+	<link href="../statics/1633chat/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../statics/1633chat/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="../statics/35chat/js/chatList.js"></script>  <!-- 调用find方法 -->
+	
+
+</head>
+	<style type="text/css">
+		html {
+			background-image: url(../statics/1633chat/images/bann1.jpg);
+			background-repeat: repeat;
+			background-size:cover; 
+		}
+		nav,#chat-list{background-color: white;}
+		#toTopHover,#toTop{background-color: black;filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5; }
+		#pagination{background-color: rgb(181,193,187);text-align:center}
+		#chat-list {padding:30px;}
+	</style>
+	
+	 <!-- Style Sheet-->
+	  <link rel='stylesheet' id='main-css-css'  href='../statics/35chat/css/main5152.css?ver=1.0' type='text/css' media='all' />
+	  
+<body >
+
+	<!--Header-->
+	<div class="header" id="home">
+		<!--top-bar-w3-agile-->
+		<div class="top-bar-w3-agile">
+			<div class="container">
+				<div class="header-top-agileits">
+					<div class="agile_forms">
+						<p><span class="fa fa-map-marker" aria-hidden="true"></span>稻花香里说丰年 传授人生经验</p>
+					</div>
+					
+					<div class="clearfix"></div>   <!-- 浮动边界 -->
+				</div>
+				<div class="header-nav">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							<h1><a class="navbar-brand" href="index.html">Just<span>Do it</span></a></h1>
+						</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="cl-effect-15" id="cl-effect-15">
+								<ul>
+									<li><a href="../index.jsp" class="active" data-hover="返回主页">返回主页</a></li>
+									<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学校 <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="#hb">华北地区</a></li>
+											<li><a href="#hd">华东地区</a></li>
+											<li><a href="#hz">华中地区</a></li>
+											<li><a href="#hn">华南地区</a></li>
+											<li><a href="#db">东北地区</a></li>
+											<li><a href="#xn">西南地区</a></li>
+											<li><a href="#xb">西北地区</a></li>
+											<li><a href="#ggt">港澳台地区</a></li>
+										</ul>
+									</li> 
+									<li><a href="../echart.jsp" data-hover="数据分析">数据分析</a></li>
+									<li class="dropdown menu__item">
+										<a href="#" class="dropdown-toggle menu__link active" data-toggle="dropdown" data-hover="发帖相关" role="button" aria-haspopup="true"
+										    aria-expanded="false">发帖相关<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											 <li><a href="../noteServlet?actionName=edit">发布新帖</a></li>
+											<li><a href="icons.html">修改原帖</a></li>
+										</ul>
+									</li>
+									<li><a href="个人中心的页面" data-hover="个人中心">个人中心</a></li>
+								</ul>
+							</nav>
+						</div>
+					</nav>
+					<div class="w3ls_search">
+						<div class="cd-main-header">
+							<ul class="cd-header-buttons">
+								<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+							</ul>
+							<!-- cd-header-buttons -->
+						</div>
+						<div id="cd-search" class="cd-search">
+							<form action="#" method="post">
+								<input name="Search" type="search" placeholder="Search..."><!-- 搜索框 -->
+							</form>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				
+			<!--Header-->
+				<!--Chat-->
+				<br><br><br><br>
+				
+				<div id="chat-list">
+				   <!-- start of page content -->
+				  				
+                                        <div class="span8 main-listing">
+														
+                                                <article class="format-standard type-post hentry clearfix">
+														
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="findToThis(2,10001)" id="hb">华北专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                              <!--最后更新日期-->        <span class="date">25 Feb, 2013</span>
+                                              <!--话题数量        -->        <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">3 Comments</a></span>
+                                              <!--浏览量 换图标-->        <span class="like-count">66</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+																
+                                                        <p>人文介绍</p><br>
+
+                                                </article>
+                                          		<article class="format-standard type-post hentry clearfix">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="find(3,10246)" id="hd">华东专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date">25 Feb, 2013</span>
+                                                                        <span class="comments"><a href="#" title="Comment on Using Javascript">0 Comments</a></span>
+                                                                        <span class="like-count">18</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                        <p>人文介绍</p><br>
+                                                </article>
+
+                                                
+
+                                                <article class=" type-post  format-standard hentry clearfix">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="find(4,11902)" id="hz">华中专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date">24 Feb, 2013</span>
+
+                                                                        <span class="comments"><a href="#" title="Comment on WordPress Site Maintenance">0 Comments</a></span>
+
+                                                                        <span class="like-count">15</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                         <p>人文介绍</p><br>
+                                                </article>
+                                                <article class=" type-post  format-standard hentry clearfix">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="find(5,10384)" id="hn">华南专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date">24 Feb, 2013</span>
+
+                                                                        <span class="comments"><a href="#" title="Comment on WordPress Site Maintenance">0 Comments</a></span>
+
+                                                                        <span class="like-count">15</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                         <p>人文介绍</p><br>
+                                                </article>
+                                                <article class=" type-post  format-standard hentry clearfix">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="find(1,10213)" id="db">东北专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date">24 Feb, 2013</span>
+
+                                                                        <span class="comments"><a href="#" title="Comment on WordPress Site Maintenance">0 Comments</a></span>
+
+                                                                        <span class="like-count">15</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                         <p>人文介绍</p><br>
+                                                </article>
+                                                <article class=" type-post  format-standard hentry clearfix">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="find(7,10611)" id="xn">西南专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date">24 Feb, 2013</span>
+
+                                                                        <span class="comments"><a href="#" title="Comment on WordPress Site Maintenance">0 Comments</a></span>
+
+                                                                        <span class="like-count">15</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                         <p>人文介绍</p><br>
+                                                </article>
+                                                <article class=" type-post  format-standard hentry clearfix">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="find(6,10698)" id="xb">西北专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date">24 Feb, 2013</span>
+
+                                                                        <span class="comments"><a href="#" title="Comment on WordPress Site Maintenance">0 Comments</a></span>
+
+                                                                        <span class="like-count">15</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                         <p>人文介绍</p><br>
+                                                </article>
+                                                <article class=" type-post  format-standard hentry clearfix">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <span onclick="find(8,10998)" id="ggt">港澳台专区</span>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date">24 Feb, 2013</span>
+
+                                                                        <span class="comments"><a href="#" title="Comment on WordPress Site Maintenance">0 Comments</a></span>
+
+                                                                        <span class="like-count">15</span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                         <p>人文介绍</p><br>
+                                                </article>
+													<br><br><br>
+                                               
+                                        <!-- end of page content -->
+                     
+				</div>
+				<!--Chat-->
+				
+			</div>
+		</div>
+	 
+
+	</div>  
+</body>
+
+	<!-- js -->
+	<script type="text/javascript" src="../statics/1633chat/js/jquery-2.2.3.min.js"></script>
+	
+	<!-- //js -->
+	<script src="../statics/1633chat/js/responsiveslides.min.js"></script><!-- 搜索框要用 -->
+	
+
+	<!--search-bar-->
+	<script src="../statics/1633chat/js/main.js"></script>   <!-- 搜索框 -->
+	<!--//search-bar-->
+
+
+	<a href="#home" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"><img src="../statics/xc/images/backtop.jpg"></img></span></a>
+	
+	<!-- //平滑滚动 -->
+	<script type="text/javascript" src="../statics/1633chat/js/bootstrap-3.1.1.min.js"></script>
+</html>

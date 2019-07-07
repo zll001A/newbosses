@@ -1,0 +1,22 @@
+package com.shsxt.newbosses.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NoteDao {
+	private BaseDao baseDao = new BaseDao();
+
+	public int addOrUpdate(String typeId ,String title, String content, Integer userId) {
+		// 1、定义sql语句  
+		String sql = "insert into new_note (title,content,typeId,pubTime,userId) values (?,?,?,now(),?)";
+		// 2、设置参数集合
+		List<Object> params = new ArrayList<Object>();
+		params.add(title);
+		params.add(content);
+		params.add(typeId);
+		params.add(userId);
+		// 3、调用BaseDao的更新方法，返回受影响的行数	
+		int row = baseDao.executeUpdate(sql, params);
+		return row;
+	}
+}

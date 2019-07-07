@@ -1,0 +1,741 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!-- //for-mobile-apps -->
+<link href="statics/1289/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="statics/1289/css/swipebox.css">
+<link href="statics/1289/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="statics/35chat/js/chatList.js"></script>
+<!--animate-->
+<link href="statics/1289/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="statics/1289/js/wow.min.js"></script>
+	<script>
+		 new WOW().init();
+	</script>
+<style>
+h3{
+margin-left:10px;
+margin-right:10px;
+margin-top:10px;
+margin-bottom:10px;
+color:blue;
+}
+
+
+.back{
+	/* display: none; */
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+</style>
+<body>
+<!-- content -->
+<div id="gallery" class="gallery all_pad wthree">
+	<div class="container">
+		<h3 class="title">各大知名院校</h3>
+
+			<div id="华北">
+				<h3>----------华北院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/beida.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">北京大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/beida.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/beida01.jpg" width=88px ></div>
+					<p onclick="javascript:find(2,10001)" style="cursor:pointer" >北京大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/qinghua.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">清华大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/qinghua.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/qinghua01.jpg" width=88px ></div>
+					<p onclick="find(2,10003)" style="cursor:pointer" >清华大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/nankai.jpg"  class="b-link-stripe b-animate-go  swipebox" >
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">天津南开大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/nankai.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/nankai01.jpg" width=88px ></div>
+					<p onclick="find(2,10055)" style="cursor:pointer" >天津南开大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/zhongyangcaijing.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">中央财经大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/zhongyangcaijing.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/zhongyangcaijing01.jpg" width=88px ></div>
+					<p onclick="find(2,10034)" style="cursor:pointer" >中央财经大学</p>
+				</div>
+			</div>
+
+			
+			
+			<div id="华东">
+				<h3>----------华东院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/fudan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">上海复旦大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/fudan.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/fudan01.jpg" width=88px ></div>
+					<p onclick="find(3,10246)" style="cursor:pointer" >上海复旦大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/tongji.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">上海同济大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/tongji.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/tongji01.jpg" width=88px ></div>
+					<p onclick="find(3,10247)" style="cursor:pointer" >上海同济大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/nanda.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">南京大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/nanda.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/nanda01.jpg" width=88px ></div>
+					<p onclick="find(3,10248)" style="cursor:pointer" >南京大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/dongnan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">东南大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/dongnan.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/dongnan01.jpg" width=88px ></div>
+					<p onclick="find(3,10286)" style="cursor:pointer" >东南大学</p>
+				</div>
+			</div>
+			
+			
+			
+			<div id="华中">
+				<h3>----------华中院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/nanchang.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">江西南昌大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/nanchang.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/nanchang01.jpg" width=88px ></div>
+					<p onclick="find(4,11902)" style="cursor:pointer" >江西南昌大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/wuhan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">湖北武汉大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/wuhan.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/wuhan01.jpg" width=88px ></div>
+					<p onclick="find(4,10486)" style="cursor:pointer" >湖北武汉大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/hunan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">湖南大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/hunan.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/hunan01.jpg" width=88px ></div>
+					<p onclick="find(4,10532)" style="cursor:pointer" >湖南大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/zhengzhou.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">河南郑州大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/zhengzhou.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/zhengzhou01.jpg" width=88px ></div>
+					<p onclick="find(4,10459)" style="cursor:pointer" >河南郑州大学</p>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			<div id="华南">
+				<h3>----------华南院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/xiamen.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">厦门大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/xiamen.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/xiamen01.jpg" width=88px ></div>
+					<p onclick="find(5,10384)" style="cursor:pointer" >厦门大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/zhongshan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">中山大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/zhongshan.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/zhongshan01.jpg" width=88px ></div>
+					<p onclick="find(5,10558)" style="cursor:pointer" >中山大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/guangxi.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">广西大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/guangxi.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/guangxi01.jpg" width=88px ></div>
+					<p onclick="find(5,10593)" style="cursor:pointer" >广西大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/hainan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">海南大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/hainan.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/hainan01.jpg" width=88px ></div>
+					<p onclick="find(5,10589)" style="cursor:pointer" >海南大学</p>
+				</div>
+			</div>
+			
+			
+			
+			<div id="东北">
+				<h3>----------东北院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/hagong.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">哈尔滨工业大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/hagong.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/hagong01.jpg" width=88px ></div>
+					<p onclick="find(1,10213)" style="cursor:pointer" >哈尔滨工业大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/jilin.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">吉林大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/jilin.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/jilin01.jpg" width=88px ></div>
+					<p onclick="find(1,10183)" style="cursor:pointer" >吉林大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/liaoning.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">辽宁大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/liaoning.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/liaoning01.jpg" width=88px ></div>
+					<p onclick="find(1,10140)" style="cursor:pointer" >辽宁大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/neimeng.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">内蒙古大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/neimeng.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/neimeng01.jpg" width=88px ></div>
+					<p onclick="find(1,10126)" style="cursor:pointer" >内蒙古大学</p>
+				</div>
+			</div>
+			
+			
+			
+			
+			<div id="西南">
+				<h3>----------西南院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/chongqing.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">重庆大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/chongqing.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/chongqing01.jpg" width=88px ></div>
+					<p onclick="find(7,10611)" style="cursor:pointer" >重庆大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/sichuan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">四川大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/sichuan.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/sichuan01.jpg" width=88px ></div>
+					<p onclick="find(7,10610)" style="cursor:pointer" >四川大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/guizhou.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">贵州大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/guizhou.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/guizhou01.jpg" width=88px ></div>
+					<p onclick="find(7,10657)" style="cursor:pointer" >贵州大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/xizang.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">西藏大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/xizang.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/xizang01.jpg" width=88px ></div>
+					<p onclick="find(7,10694)" style="cursor:pointer" >西藏大学</p>
+				</div>
+			</div>
+			
+			
+			
+			
+			<div id="西北">
+				<h3>----------西北院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/xianjiaotong.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">西安交通大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/xianjiaotong.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/xianjiaotong01.jpg" width=88px ></div>
+					<p onclick="find(6,10698)" style="cursor:pointer" >西安交通大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/ningxai.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">宁夏大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/ningxai.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/ningxai01.jpg" width=88px ></div>
+					<p onclick="find(6,10749)" style="cursor:pointer" >宁夏大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/qinghai.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">青海大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/qinghai.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/qinghai01.jpg" width=88px ></div>
+					<p onclick="find(6,10743)" style="cursor:pointer" >青海大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/lanzhou.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">兰州大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/lanzhou.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/lanzhou01.jpg" width=88px ></div>
+					<p onclick="find(6,10730)" style="cursor:pointer" >兰州大学</p>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			<div id="港澳台"">
+				<h3>----------港澳台院校----------</h3>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/guolizhongshan.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">国立中山大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/guolizhongshan.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/guolizhongshan01.jpg" width=88px ></div>
+					<p onclick="find(8,10999)" style="cursor:pointer" >国立中山大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid  wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/xianggang.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">香港大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/xianggang.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/xianggang01.jpg" width=88px ></div>
+					<p onclick="find(8,10998)" style="cursor:pointer" >香港大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/aomen.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">澳门大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/aomen.jpg" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/aomen01.jpg" width=88px ></div>
+					<p onclick="find(8,10997)" style="cursor:pointer" >澳门大学</p>
+				</div>
+			</div>
+			<div class="col-md-3 gal-grid wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+				<div class="gal-img">
+					<a href="statics/xc/images/xianggangzhongwen.jpg" class="b-link-stripe b-animate-go  swipebox">
+						<div class="item item-type-double">
+							<div class="item-hover">
+								<div class="item-info">			
+									<div class="line"></div>			
+									<div class="headline">香港中文大学</div>
+									<div class="line"></div>
+								</div>
+								<div class="mask"></div>
+							</div>
+							<div class="item-img"><img src="statics/xc/images/xianggangzhongwen.jpg" style="height:168px" alt=" " /></div>
+						</div>
+					</a>
+					<div class="view-pos"><img src="statics/xc/images/xianggangzhongwen01.jpg" width=88px ></div>
+					<p onclick="find(8,10996)" style="cursor:pointer" >香港中文大学</p>
+				</div>
+			</div>
+			
+			<!-- swipe box js -->
+				<script src="statics/1289/js/jquery.swipebox.min.js"></script> 
+					<script type="text/javascript">
+						jQuery(function($) {
+							$(".swipebox").swipebox();
+						});
+				</script>
+			<!-- //swipe box js -->
+
+		
+	</div>
+</div>
+
+
+		<script>
+									// You can also use "$(window).load(function() {"
+									$(function () {
+									 // Slideshow 4
+									$("#slider5").responsiveSlides({
+										auto: true,
+										pager: false,
+										nav: true,
+										speed: 500,
+										namespace: "callbacks",
+										before: function () {
+									$('.events').append("<li>before event fired.</li>");
+									},
+									after: function () {
+										$('.events').append("<li>after event fired.</li>");
+										}
+										});
+										});
+		</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- 返回顶部按钮，有瑕疵，功能待完善 -->
+<div class="back"> 
+	<a href="javascript:scrollTo(0,0)"><img src="statics/xc/images/backtop.jpg" style="width:30px" ></a>
+	<!-- <a href="#top)"><img src="statics/images/backtop.jpg" style="width:30px" ></a> -->
+</div>
+
+
+</body>
+</html>

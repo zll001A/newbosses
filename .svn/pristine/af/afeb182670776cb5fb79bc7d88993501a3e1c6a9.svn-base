@@ -1,0 +1,206 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>论坛专区</title>
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+
+<!-- //Meta Tags -->
+<!-- Style-sheets -->
+<link
+	href="http://localhost:8080/newbosses/statics/1633chat/css/bootstrap.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link
+	href="http://localhost:8080/newbosses/statics/1633chat/css/style.css"
+	rel="stylesheet" type="text/css" media="all" />
+
+
+
+
+</head>
+<style type="text/css">
+html {
+	background-image:
+		url(http://localhost:8080/newbosses/statics/1633chat/images/bann1.jpg);
+	background-repeat: repeat;
+	background-size: cover;
+}
+
+nav, #chat-list {
+	background-color: white;
+}
+
+#toTopHover, #toTop {
+	background-color: black;
+	filter: alpha(Opacity = 80);
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+}
+
+#pagination {
+	background-color: rgb(181, 193, 187);
+	text-align: center
+}
+
+#chat-list {
+	padding: 30px;
+}
+</style>
+
+<!-- Style Sheet-->
+<link rel='stylesheet' id='main-css-css'
+	href='http://localhost:8080/newbosses/statics/35chat/css/main5152.css?ver=1.0'
+	type='text/css' media='all' />
+
+<body>
+
+	<!--Header-->
+	<div class="header" id="home">
+		<!--top-bar-w3-agile-->
+		<div class="top-bar-w3-agile">
+			<div class="container">
+				<div class="header-top-agileits">
+					<div class="agile_forms">
+						<p>
+							<span class="fa fa-map-marker" aria-hidden="true"></span>稻花香里说丰年
+							传授人生经验
+						</p>
+					</div>
+
+					<div class="clearfix"></div>
+					<!-- 浮动边界 -->
+				</div>
+				<div class="header-nav">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<h1>
+								<a class="navbar-brand" href="#">${Lname }<span>专区</span></a>
+							</h1>
+						</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil"
+							id="bs-example-navbar-collapse-1">
+							<nav class="cl-effect-15" id="cl-effect-15">
+								<ul>
+									<li><a href="http://localhost:8080/newbosses/index.jsp"
+										class="active" data-hover="返回主页">返回主页</a></li>
+									<li><a href="bbs.jsp" data-hover="返回论坛">返回论坛</a></li>
+
+									<li><a href="数据分析的页面" data-hover="数据分析">数据分析</a></li>
+									<li class="dropdown menu__item"><a href="#"
+										class="dropdown-toggle menu__link active"
+										data-toggle="dropdown" data-hover="发帖相关" role="button"
+										aria-haspopup="true" aria-expanded="false">发帖相关<span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="codes.html">发布新帖</a></li>
+											<li><a href="icons.html">修改原帖</a></li>
+											<li><a href="icons.html">发起话题</a></li>
+										</ul></li>
+									<li><a href="个人中心的页面" data-hover="个人中心">个人中心</a></li>
+								</ul>
+							</nav>
+						</div>
+					</nav>
+
+
+
+
+					<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+					<!--Header-->
+					<!--Chat-->
+					<br>
+					<br>
+					<br>
+					<br>
+					<%-- <c:if test="${empty page }">
+					<h2>暂未查询到数据！ </h2>
+				</c:if> --%>
+					<%-- <c:if test="${!empty page }">	
+					 --%>
+
+					<div id="chat-list">
+						<!-- start of page content -->
+
+						<div class="span8 main-listing">
+
+							<c:forEach items="${chatList }" var="item">
+								<article class="format-standard type-post hentry clearfix">
+
+									<header class="clearfix">
+
+										<h3 class="post-title">
+											<a href="single.html" id="hb">${item.title}</a>
+										</h3>
+
+										<div class="post-meta clearfix">
+											<!--最后更新日期-->
+											<span class="date"><fmt:formatDate
+													value="${item.pubTime }" pattern="yyyy-MM-dd HH:mm" /></span>
+											<!--话题标签        -->
+											<span class="category"><a href="#"
+												title="View all posts in Server &amp; Database">${item.typeName }
+													&amp; ${item.schName }</a></span>
+											<!--话题数量        -->
+											<span class="comments"><a href="#"
+												title="Comment on Integrating WordPress with Your Website">3
+													Comments</a></span>
+											<!--浏览量 换图标-->
+											<span class="like-count">66</span>
+										</div>
+										<!-- end of post meta -->
+
+									</header>
+
+									<p>${item.content }<a class="readmore-link"
+											href="http://knowledgebase.inspirythemes.com/integrating-wordpress-with-your-website/">了解详情</a>
+									</p>
+									<br>
+								</article>
+							</c:forEach>
+							<br>
+							<br>
+							<br>
+							<div id="pagination">
+								<a href="#" class="btn active">1</a> <a href="#" class="btn">2</a>
+								<a href="#" class="btn">3</a> <a href="#" class="btn">下一页 »</a>
+								<a href="#" class="btn">尾页 »</a>
+							</div>
+
+						</div>
+						<!-- end of page content -->
+
+					</div>
+
+					<%-- 	</c:if> --%>
+				</div>
+			</div>
+
+
+		</div>
+</body>
+
+<!-- js -->
+<script type="text/javascript"
+	src="http://localhost:8080/newbosses/statics/1633chat/js/jquery-2.2.3.min.js"></script>
+
+
+</html>

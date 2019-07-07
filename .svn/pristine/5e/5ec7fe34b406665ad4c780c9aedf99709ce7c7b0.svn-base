@@ -1,0 +1,169 @@
+package com.shsxt.newbosses.web;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shsxt.newbosses.po.New_Type;
+import com.shsxt.newbosses.po.New_User;
+import com.shsxt.newbosses.po.Note;
+import com.shsxt.newbosses.po.vo.ResultInfo;
+import com.shsxt.newbosses.service.NoteService;
+import com.shsxt.newbosses.util.JsonUtil;
+
+@WebServlet("/noteServlet")
+public class NoteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	private NoteService noteService = new NoteService();
+	
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 接收用户行为
+				String actionName = request.getParameter("actionName");
+				
+				if ("edit".equals(actionName)) {
+					//进入页面前更新显示类别列表
+					viewNote(request, response);
+					
+				} else if ("addOrUpdate".equals(actionName)) {
+					//发布新帖或修改原帖
+					addOrUpdate(request, response);
+/*=================================================================================*/					
+				} else if ("selectType".equals(actionName)) {
+					//查询类别
+					selectType(request, response);
+					
+				} else if ("createType".equals(actionName)) {
+					//创建类别
+					createType(request, response);
+					
+				} else if ("selectType".equals(actionName)) {
+					//验证类型名的唯一性
+					checkType(request, response);
+					
+				} 
+				
+		}
+
+	/**
+	 * 验证类型名的唯一性
+	 *  1、接收参数（类型名）
+		2、从session作用域中得到schId  ======获取全部校验数据======
+		3、调用Service层，返回resultInfo对象
+		4、将resultInfo对象转换成json格式的字符串，响应给ajax的回调函数
+	 * @param request
+	 * @param response
+	 */
+	private void checkType(HttpServletRequest request, HttpServletResponse response) {
+		// 1、接收参数（类型名）
+		String typeName = request.getParameter("typeName");
+		String typeId = request.getParameter("typeId");
+		
+		//2、从session作用域中得到用户schId
+		New_User user = (New_User) request.getSession().getAttribute("user");
+		String schId = user.getSchId();
+		
+		//3、调用Service层，返回resultInfo对象
+		ResultInfo<New_Type> resultInfo = noteService.checkByNew_Type(typeId,typeName,schId);
+		
+		//4、将resultInfo对象转换成json格式的字符串，响应给ajax的回调函数
+		JsonUtil.toJson(resultInfo, response);
+	}
+
+	/**             查询类别
+	 * 发起话题，创建类别,后台先查询type数据
+	 * 	1.调用findTypeList();方法获取类型列表
+	 * 	2.设置动态包含格式
+	 * 	3.请求转发跳转页面
+	 * @param request
+	 * @param response
+	 * @throws ServletException 
+	 * @throws IOException 
+	 */
+	private void selectType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//获取
+		New_User user = (New_User) request.getSession().getAttribute("user");
+		List<New_Type> typeList = null;
+		if(user.equals(null)){
+			//如果未登录，查询所有话题
+			// 1.调用findTypeList();方法获取类型列表， 限定条件
+			typeList = noteService.findTypeList();
+			
+		}else{
+			//如果登录，查询schId话题
+			// 1.调用findTypeList();方法获取类型列表， 限定条件
+			typeList = noteService.findTypeList(user.getSchId());
+		}
+		request.setAttribute("typeList", typeList);
+		// 2.设置动态包含格式
+		request.setAttribute("changePage", "createType.jsp");
+		// 3.请求转发跳转页面
+		request.getRequestDispatcher("chat/Edit.jsp").forward(request, response);
+	}
+
+	/**               创建类别
+	 * 发起话题，创建类别,后台先查询type数据
+	 * 	1. 
+	 * 	2. 
+	 * 	3. 
+	 * 	4. 
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 */
+	private void createType(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 1. 通过type表查话题类型，限定条件为schId，返回list列表
+		New_User user = (New_User) request.getSession().getAttribute("user");
+		if(user.equals(null)){
+			//如果未登录，请先登录
+			response.sendRedirect("login.jsp");
+			return;
+		} 
+		
+	}
+
+	private void viewNote(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		List<New_Type> typeList = noteService.findTypeList();
+		request.setAttribute("typeList", typeList);
+		request.getRequestDispatcher("chat/Edit.jsp").forward(request, response);
+	}
+
+	/**
+	 * 添加或更新帖子
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 * @throws ServletException
+	 */
+	private void addOrUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		// 1、接收参数（类型Id、标题、内容）userId schId
+		String typeId = request.getParameter("typeId");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		//从session中调取userId
+		New_User user = (New_User) request.getSession().getAttribute("user");
+		Integer userId = user.getUserId();
+		// 2、调用Service层的更新方法，返回resultInfo对象
+		ResultInfo<Note> resultInfo = noteService.addOrUpdate(typeId,  title, content,userId);
+		
+		// 3、判断是否更新成功
+		if (resultInfo.getCode() == 1) { // 成功则挑转到论坛
+			// 重定向跳转到论坛	
+			response.sendRedirect("chat/bbs.jsp");
+		} else {
+			// 将resultInfo对象存到request作用域中
+			request.setAttribute("resultInfo", resultInfo);
+			request.getRequestDispatcher("noteServlet?actionName=edit").forward(request, response);
+		}
+		
+	}
+
+
+
+}

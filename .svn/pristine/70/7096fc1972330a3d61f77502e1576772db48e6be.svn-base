@@ -1,0 +1,338 @@
+*{margin: 0;padding: 0;}
+li{list-style-type: none;}
+.slide{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+.slide1{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+.slide2{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+.slide3{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+.slide4{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+.slide5{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+.slide6{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+.slide7{
+    width: 1150px;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 轮播内容 */
+.slide .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+
+.slide .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+
+.slide1 .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.slide1 .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+.slide2 .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.slide2 .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+.slide3 .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.slide3 .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+.slide4 .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.slide4 .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+.slide5 .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.slide5 .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+.slide6 .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.slide6 .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+.slide7 .slide-content{
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.slide7 .slide-content .slide-item{
+    float: left;
+    width: 1150px;
+    height: 400px;
+}
+/* #轮播内容 */
+/* 按钮 */
+.slide .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.slide1 .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide1 .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide1 .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide1 a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.slide2 .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide2 .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide2 .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide2 a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.slide3 .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide3 .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide3 .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide3 a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.slide4 .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide4 .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide4 .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide4 a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.slide5 .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide5 .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide5 .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide5 a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.slide6 .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide6 .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide6 .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide6 a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+.slide7 .slide-btn{
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+}
+.slide7 .prev{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background:url(../img/pre.png) no-repeat center center;
+}
+.slide7 .next{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background:url(../img/next.png) no-repeat center center;
+}
+.slide7 a:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* #按钮 */

@@ -1,0 +1,19 @@
+function find(local, sch){
+	//判断非空
+	if (local == null || local.trim() == "") {
+		return;
+	}
+	//调用数据库写页面
+	$.ajax({
+		type:"post",
+		url:"chatServlet",
+		data:{
+			actionName:"inchat",
+			local:local,
+			sch:sch
+		},
+		success:function(data){
+			console.log("成功");
+		}
+	});
+}

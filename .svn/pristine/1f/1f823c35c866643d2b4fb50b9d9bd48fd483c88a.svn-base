@@ -1,0 +1,176 @@
+package com.shsxt.newbosses.service;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
+
+import com.shsxt.newbosses.dao.UserDao;
+import com.shsxt.newbosses.po.New_User;
+import com.shsxt.newbosses.po.vo.ResultInfo;
+import com.shsxt.newbosses.util.MD5Util;
+import com.shsxt.newbosses.util.StringUtil;
+import com.shsxt.newbosses.po.New_User;
+
+public class UserService {
+	
+	private UserDao userDao = new UserDao();
+	
+	/**
+	 *  1、判断参数是否为空（用户名和密码）
+			如果为空，设置resultInfo对象中的code与msg，返回resultInfo
+		2、调用Dao层的查询方法，得到用户对象
+		3、判断用户对象是否为空
+			如果为空，设置resultInfo对象中的code与msg，返回resultInfo
+		4、将前台传递的密码加密
+		5、将加密后的密码与数据库中查询到的密码作比较
+			如果不一致，设置resultInfo对象中的code与msg，返回resultInfo
+		6、如果密码正确，则表示登录成功，设置resultInfo对象中的code与msg、result，返回resultInfo
+	 * @param userName
+	 * @param pwd
+	 * @return
+	 */
+	public ResultInfo<New_User> userLogin(String userName, String userPwd) {
+
+		ResultInfo<New_User> resultInfo = new ResultInfo<>();
+		
+		New_User u = new New_User();
+		u.setuName(userName);
+		u.setuPwd(userPwd);
+		
+		resultInfo.setResult(u);
+		
+		//  1、判断参数是否为空（用户名和密码）
+		if (StringUtil.isEmpty(userName) || StringUtil.isEmpty(userPwd)) {
+			// 如果为空，设置resultInfo对象中的code与msg，返回resultInfo
+			resultInfo.setCode(0);
+			resultInfo.setMsg("用户名称或密码不能为空！");
+			return resultInfo;
+		}
+		
+		// 2、调用Dao层的查询方法，得到用户对象
+		New_User user = userDao.findUserByName(userName);
+		
+		// 3、判断用户对象是否为空
+		if (user == null) {
+			// 如果为空，设置resultInfo对象中的code与msg，返回resultInfo
+			resultInfo.setCode(0);
+			resultInfo.setMsg("用户名不存在！");
+			return resultInfo;
+		}
+		
+		// 4、将前台传递的密码加密
+		String pwd = MD5Util.encode(MD5Util.encode(userPwd));
+		
+		// 5、将加密后的密码与数据库中查询到的密码作比较
+		if (!userPwd.equals(user.getuPwd())) {
+			// 如果不一致，设置resultInfo对象中的code与msg，返回resultInfo
+			resultInfo.setCode(0);
+			resultInfo.setMsg("用户密码不正确！");
+			return resultInfo;
+		}
+		
+		// 6、如果密码正确，则表示登录成功，设置resultInfo对象中的code与msg、result，返回resultInfo
+		resultInfo.setCode(1);
+		resultInfo.setMsg("登录成功！");
+		resultInfo.setResult(user);
+		
+		return resultInfo;
+	}
+	
+	/**
+	 * 验证昵称的唯一性
+	 * @param nick
+	 * @param userId
+	 * @return
+	 */
+	public ResultInfo<New_User> checkUserName(String nick, Integer userId) {
+		// 1.判断参数是否为空
+		ResultInfo<New_User> resultInfo = new ResultInfo<New_User>();
+		if(StringUtil.isEmpty(nick)){
+			resultInfo.setCode(0);
+			resultInfo.setMsg("用户昵称不能为空");
+			return resultInfo;
+			
+		}
+		// 2.调用dao层，通过昵称查询不是当前登录的用户 返回用户对象
+		New_User user = userDao.findUserByNickAndUserId(nick,userId);
+		// 3.判断用户对象是否为空
+		if(user == null){
+			resultInfo.setCode(1);
+		}else{
+			resultInfo.setCode(0);
+			resultInfo.setMsg("昵称已被占用，请重新输入！");
+		}
+		// 4.返回resultInfo对象
+		return resultInfo;
+	}
+	
+	/**
+	 * 修改用户信息 上传头像
+	 * @param request
+	 * @return
+	 * @throws ServletException 
+	 * @throws IOException 
+	 */
+	public ResultInfo<New_User> updateUser(HttpServletRequest request) throws IOException, ServletException {
+		ResultInfo<New_User> resultInfo = new ResultInfo<>();
+				
+				// 1、接收参数（用户昵称、心情）
+				String nick = request.getParameter("nick");
+				String mood = request.getParameter("mood");
+				
+				// 2、从session域对象中得到userId
+				New_User user = (New_User) request.getSession().getAttribute("user");
+				Integer userId = user.getUserId();
+				
+				// 3、判断必填参数不能为空
+				if (StringUtil.isEmpty(nick)) {
+					resultInfo.setCode(0);
+					resultInfo.setMsg("用户昵称不能为空！");
+					return resultInfo;
+				}
+				
+				// =================== 4、文件上传  ==================
+				String head = user.getHead(); // 头像的默认值
+				// 得到part对象   request.getPart(name); name是表单中file文件域的name属性值
+				Part part = request.getPart("img");
+				// 得到上传文件的名称
+				String fileName = part.getSubmittedFileName();
+				// 判断是否上传了文件
+				if (StringUtil.isNotEmpty(fileName)) {
+					// 上传文件，则将文件上传到指定目录下
+					// 得到文件存放的路径
+					String path = request.getServletContext().getRealPath("/WEB-INF/upload/");
+					// 上传文件
+					part.write(path +fileName); 
+					
+					// 修改头像的值
+					head = fileName;
+				}
+				
+				// 4、调用Dao层的更新方法，通过用户ID修改用户信息，返回受影响的行数
+				int row = userDao.updateUser(userId,nick,mood,head);
+				
+				// 5、判断受影响的行数是否大于0	
+				// 大于0成功，否则失败
+				if (row > 0) {
+					resultInfo.setCode(1);
+					
+					// 更新user存放在session域对象中的值
+					user.setHead(head);
+					user.setMood(mood);
+					user.setNick(nick);
+					request.getSession().setAttribute("user", user);
+					
+				} else {
+					resultInfo.setCode(0);
+					resultInfo.setMsg("更新失败");
+				}
+				return resultInfo;
+			}
+	}
+	
+
+

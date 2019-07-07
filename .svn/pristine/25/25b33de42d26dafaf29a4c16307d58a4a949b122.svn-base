@@ -1,0 +1,115 @@
+package com.shsxt.newbosses.filter;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 请求字符集乱码处理
+ * 	Tomcat8版本及以上
+ * 		GET请求		不会乱码		不需要处理
+ * 		POST请求		会乱码		1、request.setCharacterEncoding("UTF-8");
+ * 								2、new String(request.getParameter(name).getBytes("ISO-8859-1"),"UTF-8");	
+ * 
+ * 	Tomcat7版本及以上
+ * 		GET请求		会乱码		1、new String(request.getParameter(name).getBytes("ISO-8859-1"),"UTF-8");
+ *	    POST请求		会乱码		1、request.setCharacterEncoding("UTF-8");
+ * 								2、new String(request.getParameter(name).getBytes("ISO-8859-1"),"UTF-8");	
+ */
+@WebFilter("/*")
+public class EncodeFilter implements Filter {
+
+    
+    public EncodeFilter() {
+        
+    }
+
+	
+	public void destroy() {
+		
+	}
+
+	
+	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+		
+		// 基于Http
+		HttpServletRequest request = (HttpServletRequest) req;
+		HttpServletResponse response = (HttpServletResponse) resp;
+		
+		// 处理POST请求
+		request.setCharacterEncoding("UTF-8");
+		
+		// 处理GET请求，Tomcat7及以下
+		
+		// 得到 请求方式
+		String method  = request.getMethod();
+		if ("GET".equalsIgnoreCase(method)) {
+			// 获取服务器信息
+			String serverInfo = request.getServletContext().getServerInfo(); // Apache Tomcat/8.0.45
+			//System.out.println(serverInfo);
+			// 截取服务器版本的版本号
+			String versionStr = serverInfo.substring(serverInfo.indexOf("/")+1,serverInfo.indexOf("."));
+			//System.out.println(versionStr);
+			// 判断是否是Tomcat7及以下
+			if (Integer.parseInt(versionStr)  < 8) {
+				// GET请求乱码处理
+				
+				// 定义内部类，继承HttpServletRequestWapper包装类，重写getParameter()方法
+				MyWapper myRequest = new MyWapper(request);
+				// 放行
+				chain.doFilter(myRequest, response);
+				return;
+			}
+		} 
+		
+		chain.doFilter(request, response);
+		
+		
+	}
+
+	
+	public void init(FilterConfig fConfig) throws ServletException {
+		
+	}
+	
+	
+	/**
+	 * 定义内部类，继承HttpServletRequestWapper包装类，重写getParameter()方法
+	 * @author Lisa Li
+	 *
+	 */
+	class MyWapper extends HttpServletRequestWrapper {
+		
+		// 定义全局变量 （将构造方法中的局部变量值赋给该全局变量）
+		private HttpServletRequest request;
+
+		public MyWapper(HttpServletRequest request) {
+			super(request);
+			this.request = request;
+		}
+
+		@Override
+		public String getParameter(String name) {
+			String value = "";
+			try {
+				value = new String(request.getParameter(name).getBytes("ISO-8859-1"),"UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			return value;
+		}
+		
+		
+	}
+
+}

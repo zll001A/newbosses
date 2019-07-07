@@ -1,0 +1,20 @@
+package com.shsxt.newbosses.dao;
+
+import com.shsxt.newbosses.po.vo.ChatList;
+
+public class ChatDao {
+
+	/**
+	 * 获得出现一次的信息给前台页面填充
+	 * @param local
+	 * @param sch
+	 * @return
+	 */
+	public ChatList findByLocalAndSch(String local, String sch) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

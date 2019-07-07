@@ -1,0 +1,57 @@
+package com.shsxt.newbosses.web;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shsxt.newbosses.po.NoteType;
+import com.shsxt.newbosses.service.TypeService;
+
+/**
+ * 类型模块
+ * 	actionName
+ * 	1、查询类型列表  	 	list
+ * 	2、删除类型		 	delete
+ * 	3、添加和修改类型	 	addOrUpdate
+ * 	4、验证类型名的唯一性	checkTypeName
+ */
+@WebServlet("/typeServlet")
+public class TypeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	private TypeService typeService = new TypeService();
+
+	
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+			typeList(request, response);
+
+	}
+
+
+	/**
+	 * 查询类型列表
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	private void typeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		// 调用Service层的查询方法，返回类型集合
+		List<NoteType> list = typeService.findTypeList();
+		// 将类型集合存到request域对象中
+		request.setAttribute("typeList", list);
+		
+		request.getRequestDispatcher("chat/Edit.jsp").forward(request, response);
+	
+		
+	}
+
+}

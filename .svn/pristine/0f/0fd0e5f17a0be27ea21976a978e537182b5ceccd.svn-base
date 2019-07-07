@@ -1,0 +1,68 @@
+package com.shsxt.newbosses.web;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shsxt.newbosses.po.vo.ChatList;
+import com.shsxt.newbosses.po.vo.ResultInfo;
+import com.shsxt.newbosses.service.ChatService;
+
+/**
+ * 进入论坛版块
+ */
+@WebServlet("/chatServlet")
+public class ChatServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	ChatService chatService = new ChatService();
+	
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 获取参数
+		String actionName = request.getParameter("actionName");
+		//判断
+		if("inchat".equals(actionName)){
+			inchat(request,response);
+		}
+	}
+
+	/**
+	 * 把查到的值放到域对象里
+	 * 			1.查标题 String
+	 * 			2.查内容 List
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 */
+	private void inchat(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 接收参数
+		String local = request.getParameter("local");
+		String sch = request.getParameter("sch");
+		
+		//1.查标题 String     调用方法  先把出现一次的找出来
+		ResultInfo<ChatList> resultInfo = chatService.findList(local,sch);
+		String Lname = resultInfo.getResult().getLocalName();
+		//System.out.println(Lname);
+		if(!resultInfo.getResult().equals(null)){
+			//把方法放到域对象里
+			request.getSession().setAttribute("Lname", Lname);
+		}else{
+			return;
+		}
+		
+		//2.查内容 List  select * from new_note n,new_type t where t.typeId=n.typeId
+		
+		
+		
+		
+		
+		//重定向
+		response.sendRedirect("chat/chatList-all.jsp");
+		
+	}
+
+}
